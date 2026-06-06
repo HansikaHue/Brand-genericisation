@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Genericization isn't the problem. It's the report card.</title>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,500;0,700;1,400;1,700&family=Inter:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:#0d0d0d;
+  min-height:100vh;
+  font-family:'Inter',sans-serif;
+  color:#1a1a1a;
+  padding:0;
+}
+
+/* ─── HERO ─── */
+.hero{
+  background:#0d0d0d;
+  padding:5rem 2rem 4rem;
+  text-align:center;
+  border-bottom:1px solid #222;
+}
+.hero-tag{
+  font-family:'Courier Prime',monospace;
+  font-size:10px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:#555;
+  display:block;
+  margin-bottom:1.6rem;
+}
+.hero-title{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:clamp(32px,5vw,58px);
+  font-weight:700;
+  font-style:italic;
+  line-height:1.18;
+  color:#f0ede6;
+  margin-bottom:1rem;
+  max-width:760px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.hero-title em{
+  font-style:normal;
+  color:#888;
+}
+.hero-byline{
+  font-family:'Courier Prime',monospace;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#444;
+  margin-top:1.6rem;
+}
+
+/* ─── INTRO SECTION ─── */
+.intro{
+  background:#f5f2eb;
+  padding:4rem 2rem;
+}
+.intro-inner{
+  max-width:660px;
+  margin:0 auto;
+}
+.np{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:17px;
+  line-height:1.82;
+  color:#2a2a2a;
+  margin-bottom:1.3rem;
+}
+.np:first-of-type::first-letter{
+  font-size:4em;
+  float:left;
+  line-height:.75;
+  margin:.06em .12em 0 0;
+  font-weight:700;
+  color:#0d0d0d;
+}
+
+/* ─── SECTION DIVIDERS ─── */
+.section-label{
+  background:#0d0d0d;
+  padding:1.6rem 2rem;
+  display:flex;
+  align-items:center;
+  gap:1rem;
+}
+.section-label-text{
+  font-family:'Courier Prime',monospace;
+  font-size:10px;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:#444;
+  white-space:nowrap;
+}
+.section-label-line{
+  flex:1;
+  height:1px;
+  background:#222;
+}
+.section-num{
+  font-family:'Courier Prime',monospace;
+  font-size:10px;
+  letter-spacing:.1em;
+  color:#333;
+  white-space:nowrap;
+}
+
+/* ─── PULLQUOTE SHARED ─── */
+.npull{
+  border-top:2px solid #0d0d0d;
+  border-bottom:2px solid #0d0d0d;
+  padding:1.6rem 0;
+  margin:2.2rem 0;
+}
+.npull p{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:19px;
+  font-style:italic;
+  line-height:1.65;
+  color:#333;
+  text-align:center;
+}
+
+/* ─────────────────────── */
+/* 01. XEROX DOSSIER       */
+/* ─────────────────────── */
+.xerox-world{
+  background:#f9f8f4;
+  padding:3rem 2rem 0;
+}
+.dossier{
+  max-width:680px;
+  margin:0 auto;
+  border:1.5px solid #1a1a1a;
+  background:#fff;
+  box-shadow:4px 4px 0 #1a1a1a;
+}
+.dossier-header{
+  background:#1a1a1a;
+  padding:.75rem 1.6rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.dossier-header span{
+  font-family:'Courier Prime',monospace;
+  font-size:10px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:#fff;
+}
+.dossier-header .ref{color:#555}
+.dfield{
+  display:grid;
+  grid-template-columns:150px 1fr;
+  border-bottom:1px solid #e5e5e5;
+}
+.dfield:last-child{border-bottom:none}
+.dk{
+  font-family:'Courier Prime',monospace;
+  font-size:9.5px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#aaa;
+  padding:.8rem 1rem .8rem 1.4rem;
+  border-right:1px solid #e5e5e5;
+  background:#fafafa;
+  display:flex;
+  align-items:center;
+}
+.dv{
+  font-family:'Courier Prime',monospace;
+  font-size:12.5px;
+  line-height:1.65;
+  color:#1a1a1a;
+  padding:.8rem 1rem .8rem 1.3rem;
+}
+.dossier-fields{border-bottom:1.5px solid #1a1a1a}
+.dossier-narrative{
+  padding:1.6rem 1.8rem;
+  border-bottom:1.5px solid #1a1a1a;
+}
+.dossier-narrative-label{
+  font-family:'Courier Prime',monospace;
+  font-size:9px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:#ccc;
+  display:block;
+  margin-bottom:1rem;
+}
+.dossier-narrative p{
+  font-family:'Courier Prime',monospace;
+  font-size:12.5px;
+  line-height:1.85;
+  color:#222;
+  margin-bottom:.85rem;
+}
+.dossier-narrative p:last-child{margin-bottom:0}
+.dossier-verdict{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  border-bottom:1.5px solid #1a1a1a;
+}
+.dv-col{padding:1.2rem 1.6rem}
+.dv-col:first-child{border-right:1.5px solid #1a1a1a}
+.dv-label{
+  font-family:'Courier Prime',monospace;
+  font-size:9px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#bbb;
+  display:block;
+  margin-bottom:.6rem;
+}
+.dv-win{
+  font-family:'Courier Prime',monospace;
+  font-size:16px;
+  font-weight:700;
+  color:#1a5c1a;
+  letter-spacing:.04em;
+  line-height:1.2;
+}
+.dv-loss{
+  font-family:'Courier Prime',monospace;
+  font-size:13px;
+  font-style:italic;
+  color:#ccc;
+}
+.dv-loss-sub{
+  display:block;
+  font-family:'Courier Prime',monospace;
+  font-size:9px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#ddd;
+  margin-top:.3rem;
+}
+.dossier-stamp-area{
+  padding:1.8rem;
+  display:flex;
+  align-items:center;
+  gap:2rem;
+  border-bottom:1.5px solid #1a1a1a;
+}
+.dossier-pq{
+  font-family:'Courier Prime',monospace;
+  font-size:12px;
+  font-style:italic;
+  line-height:1.78;
+  color:#777;
+  flex:1;
+  border-left:2px solid #e5e5e5;
+  padding-left:1.1rem;
+}
+.stamp{
+  flex-shrink:0;
+  transform:rotate(-9deg);
+  text-align:center;
+}
+.stamp-box{
+  display:inline-block;
+  border:4px solid rgba(170,25,25,.78);
+  padding:.6rem 1rem .5rem;
+  position:relative;
+}
+.stamp-box::before{
+  content:'';
+  position:absolute;
+  inset:-8px;
+  border:1px solid rgba(170,25,25,.18);
+}
+.stamp-line1{
+  font-family:'Courier Prime',monospace;
+  font-size:17px;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:rgba(170,25,25,.82);
+  display:block;
+  line-height:1.1;
+}
+.stamp-line2{
+  font-family:'Courier Prime',monospace;
+  font-size:9px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:rgba(170,25,25,.6);
+  border-top:1.5px solid rgba(170,25,25,.35);
+  padding-top:.25rem;
+  margin-top:.25rem;
+  display:block;
+}
+.dossier-footer{
+  background:#fafafa;
+  padding:.55rem 1.4rem;
+  display:flex;
+  justify-content:space-between;
+}
+.dossier-footer span{
+  font-family:'Courier Prime',monospace;
+  font-size:9px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:#ccc;
+}
+.xerox-world-footer{
+  max-width:680px;
+  margin:0 auto;
+  padding:2rem 0 3rem;
+}
+
+/* ─────────────────────── */
+/* 02. GOOGLE SEARCH       */
+/* ─────────────────────── */
+.google-world{
+  background:#fff;
+  padding:2.5rem 2rem 3rem;
+}
+.google-inner{max-width:680px;margin:0 auto}
+
+/* Google bar */
+.g-header{
+  display:flex;
+  align-items:center;
+  gap:1.2rem;
+  margin-bottom:1.4rem;
+}
+.g-logo{
+  font-family:'Inter',sans-serif;
+  font-size:26px;
+  font-weight:600;
+  letter-spacing:-.5px;
+  flex-shrink:0;
+}
+.g-logo .g-b{color:#4285F4}
+.g-logo .g-r{color:#EA4335}
+.g-logo .g-y{color:#FBBC05}
+.g-logo .g-g{color:#34A853}
+.g-logo .g-e{color:#EA4335}
+.g-logo .g-e2{color:#4285F4}
+.g-bar{
+  flex:1;
+  border:1.5px solid #ddd;
+  border-radius:24px;
+  padding:.65rem 1.2rem .65rem 1.4rem;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  box-shadow:0 1px 6px rgba(0,0,0,.08);
+}
+.g-query{
+  font-family:'Inter',sans-serif;
+  font-size:15px;
+  color:#202124;
+}
+.g-query span{
+  display:inline-block;
+  width:2px;
+  height:16px;
+  background:#4285F4;
+  margin-left:1px;
+  vertical-align:middle;
+  animation:blink 1.1s step-end infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.g-mic{
+  font-size:18px;
+  color:#aaa;
+  cursor:default;
+}
+.g-stats{
+  font-family:'Inter',sans-serif;
+  font-size:13px;
+  color:#70757a;
+  margin-bottom:1.2rem;
+  padding-bottom:.8rem;
+  border-bottom:1px solid #ebebeb;
+}
+
+/* AI Overview box */
+.g-ai-overview{
+  border:1px solid #ddd;
+  border-radius:12px;
+  padding:1.2rem 1.4rem;
+  margin-bottom:1.4rem;
+  position:relative;
+  background:#fafafa;
+}
+.g-ai-label{
+  display:flex;
+  align-items:center;
+  gap:.5rem;
+  margin-bottom:.9rem;
+}
+.g-ai-gem{
+  width:20px;
+  height:20px;
+  background:linear-gradient(135deg,#4285F4,#34A853,#EA4335);
+  border-radius:50%;
+  flex-shrink:0;
+}
+.g-ai-text{
+  font-family:'Inter',sans-serif;
+  font-size:13px;
+  font-weight:600;
+  color:#202124;
+}
+.g-ai-body{
+  font-family:'Inter',sans-serif;
+  font-size:14.5px;
+  line-height:1.72;
+  color:#202124;
+}
+.g-ai-body p{margin-bottom:.75rem}
+.g-ai-body p:last-child{margin-bottom:0}
+
+/* regular search results */
+.g-result{margin-bottom:1.4rem}
+.g-result-url{
+  font-family:'Inter',sans-serif;
+  font-size:12px;
+  color:#202124;
+  margin-bottom:.15rem;
+  display:flex;
+  align-items:center;
+  gap:.4rem;
+}
+.g-result-favicon{
+  width:16px;height:16px;
+  background:#eee;
+  border-radius:50%;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-size:8px;
+  color:#888;
+  flex-shrink:0;
+}
+.g-result-title{
+  font-family:'Inter',sans-serif;
+  font-size:19px;
+  color:#1a0dab;
+  margin-bottom:.3rem;
+  line-height:1.3;
+  font-weight:400;
+}
+.g-result-snippet{
+  font-family:'Inter',sans-serif;
+  font-size:14px;
+  line-height:1.58;
+  color:#4d5156;
+}
+.g-pullquote{
+  background:#e8f0fe;
+  border-left:4px solid #4285F4;
+  padding:1rem 1.2rem;
+  margin:1.6rem 0;
+  border-radius:0 8px 8px 0;
+}
+.g-pullquote p{
+  font-family:'Inter',sans-serif;
+  font-size:15px;
+  line-height:1.6;
+  color:#202124;
+  font-style:italic;
+}
+
+/* ─────────────────────── */
+/* 03. FEVICOL             */
+/* ─────────────────────── */
+.fevicol-world{
+  background:#f5c842;
+  padding:3.5rem 2rem;
+  position:relative;
+  overflow:hidden;
+}
+/* grain on top */
+.fevicol-world::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.06'/%3E%3C/svg%3E");
+  pointer-events:none;
+}
+.fevicol-inner{
+  max-width:680px;
+  margin:0 auto;
+  position:relative;
+  z-index:1;
+}
+.fevicol-kicker{
+  font-family:'Courier Prime',monospace;
+  font-size:10px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:rgba(0,0,0,.4);
+  margin-bottom:1.2rem;
+  display:block;
+}
+.fevicol-headline{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:clamp(36px,6vw,72px);
+  font-weight:700;
+  line-height:1.08;
+  color:#1a1a1a;
+  margin-bottom:1.8rem;
+  letter-spacing:-.02em;
+}
+.fevicol-hindi{
+  font-family:'Noto Sans Devanagari','Courier Prime',monospace;
+  font-size:clamp(22px,4vw,42px);
+  font-weight:700;
+  color:rgba(0,0,0,.15);
+  letter-spacing:.02em;
+  margin-bottom:2rem;
+  display:block;
+  line-height:1.3;
+}
+.fevicol-body{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:2rem;
+  margin-bottom:2rem;
+}
+@media(max-width:540px){.fevicol-body{grid-template-columns:1fr}}
+.fevicol-col p{
+  font-family:'Inter',sans-serif;
+  font-size:14.5px;
+  line-height:1.75;
+  color:#1a1a1a;
+  margin-bottom:1rem;
+}
+.fevicol-col p:last-child{margin-bottom:0}
+.fevicol-sticker{
+  background:#fff;
+  border:2px solid #1a1a1a;
+  padding:1.2rem 1.6rem;
+  display:inline-block;
+  transform:rotate(-1.5deg);
+  margin-top:1rem;
+  box-shadow:3px 3px 0 #1a1a1a;
+}
+.fevicol-sticker p{
+  font-family:'Courier Prime',monospace;
+  font-size:13px;
+  font-style:italic;
+  line-height:1.65;
+  color:#1a1a1a !important;
+}
+
+/* ─────────────────────── */
+/* COMPARISON TABLE        */
+/* ─────────────────────── */
+.table-world{
+  background:#0d0d0d;
+  padding:3.5rem 2rem;
+}
+.table-inner{max-width:680px;margin:0 auto}
+.table-heading{
+  font-family:'Courier Prime',monospace;
+  font-size:10px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:#444;
+  margin-bottom:1.6rem;
+  display:block;
+}
+.comp-table{width:100%;border-collapse:collapse}
+.comp-table th{
+  font-family:'Courier Prime',monospace;
+  font-size:9.5px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:#555;
+  text-align:left;
+  padding:10px 14px;
+  border-bottom:1px solid #222;
+}
+.comp-table td{
+  font-family:'Inter',sans-serif;
+  font-size:13.5px;
+  line-height:1.55;
+  color:#bbb;
+  padding:12px 14px;
+  border-bottom:1px solid #1a1a1a;
+  vertical-align:top;
+}
+.comp-table tr:last-child td{border-bottom:none}
+.comp-table td:first-child{
+  font-family:'Courier Prime',monospace;
+  font-weight:700;
+  color:#f0ede6;
+  letter-spacing:.04em;
+}
+
+/* ─────────────────────── */
+/* MAGGI / IRREPLACEABILITY*/
+/* ─────────────────────── */
+.maggi-world{
+  background:#cc1f1f;
+  padding:0;
+  position:relative;
+  overflow:hidden;
+}
+
+/* top yellow stripe — Maggi packaging */
+.maggi-stripe-top{
+  background:#f5c842;
+  padding:.7rem 2rem;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.maggi-brand{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:clamp(28px,5vw,48px);
+  font-weight:700;
+  font-style:italic;
+  color:#cc1f1f;
+  letter-spacing:-.02em;
+  line-height:1;
+}
+.maggi-2min{
+  font-family:'Inter',sans-serif;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:#cc1f1f;
+  text-align:right;
+  line-height:1.4;
+}
+
+/* main red body */
+.maggi-body-wrap{
+  padding:2.5rem 2rem;
+  position:relative;
+}
+
+/* faint noodle squiggle watermark */
+.maggi-body-wrap::before{
+  content:'∿∿∿∿∿∿∿∿∿∿';
+  position:absolute;
+  font-size:clamp(60px,12vw,120px);
+  color:rgba(255,255,255,.04);
+  letter-spacing:.2em;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+  white-space:nowrap;
+}
+
+.maggi-inner{max-width:680px;margin:0 auto;position:relative;z-index:1}
+
+/* RECALL badge */
+.maggi-recall-row{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  margin-bottom:1.8rem;
+}
+.maggi-recall-badge{
+  background:#f5c842;
+  color:#cc1f1f;
+  font-family:'Courier Prime',monospace;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  padding:.35rem .8rem;
+  flex-shrink:0;
+}
+.maggi-recall-date{
+  font-family:'Courier Prime',monospace;
+  font-size:10px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.35);
+}
+
+.maggi-kicker{
+  font-family:'Courier Prime',monospace;
+  font-size:10px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.4);
+  margin-bottom:1rem;
+  display:block;
+}
+.maggi-headline{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:clamp(22px,3.5vw,36px);
+  font-weight:700;
+  font-style:italic;
+  line-height:1.25;
+  color:#f5c842;
+  margin-bottom:2rem;
+}
+.maggi-body p{
+  font-family:'Inter',sans-serif;
+  font-size:15px;
+  line-height:1.78;
+  color:rgba(255,255,255,.82);
+  margin-bottom:1.1rem;
+}
+.maggi-body p:last-child{margin-bottom:0}
+
+/* split insight — packaging back panel feel */
+.maggi-split{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1px;
+  background:rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.15);
+  margin:2rem 0;
+}
+@media(max-width:480px){.maggi-split{grid-template-columns:1fr}}
+.maggi-split-col{
+  background:#cc1f1f;
+  padding:1.2rem 1.4rem;
+}
+.maggi-split-label{
+  font-family:'Courier Prime',monospace;
+  font-size:9px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.35);
+  display:block;
+  margin-bottom:.5rem;
+}
+.maggi-split-val{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:15px;
+  font-weight:700;
+  line-height:1.3;
+}
+.maggi-split-val.safe{color:#f5c842}
+.maggi-split-val.danger{color:#ff9999}
+
+.maggi-callout{
+  background:#f5c842;
+  padding:1.4rem 1.6rem;
+  margin:2rem 0 0;
+}
+.maggi-callout p{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:17px;
+  font-style:italic;
+  line-height:1.6;
+  color:#cc1f1f;
+  text-align:center;
+}
+
+/* bottom yellow stripe */
+.maggi-stripe-bottom{
+  background:#f5c842;
+  padding:.5rem 2rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.maggi-stripe-bottom span{
+  font-family:'Courier Prime',monospace;
+  font-size:9px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:#cc1f1f;
+  opacity:.7;
+}
+
+/* ─── CONCLUSION ─── */
+.conclusion-world{
+  background:#0d0d0d;
+  padding:4rem 2rem 5rem;
+  text-align:center;
+}
+.conclusion-inner{max-width:560px;margin:0 auto}
+.conclusion-text{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:clamp(20px,3vw,28px);
+  font-style:italic;
+  line-height:1.6;
+  color:#f0ede6;
+  margin-bottom:2rem;
+}
+.conclusion-sub{
+  font-family:'Courier Prime',monospace;
+  font-size:11px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:#444;
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="hero-tag">Brand strategy &nbsp;·&nbsp; Case study</span>
+  <h1 class="hero-title">Genericization isn't<br>the problem.<br><em>It's the report card.</em></h1>
+  <span class="hero-byline">Hansika Bansal &nbsp;·&nbsp; 2026</span>
+</div>
+
+<!-- INTRO -->
+<div class="intro">
+  <div class="intro-inner">
+    <p class="np">At some point, someone asked a colleague to "just Xerox this" about a machine that wasn't a Xerox. Someone else told their friend to "Google it" on Safari. And somewhere in India, a carpenter asked for Fevicol when he meant any adhesive at all. Three brands. Three different decades. Three very different outcomes from what looks, on the surface, like the same problem.</p>
+    <p class="np">Brand genericization is when your brand name stops referring to your product and starts referring to an entire category. Legally, it's supposed to be a nightmare. A brand that becomes generic loses its trademark, which means competitors can use your name freely. But the legal framing misses something important: genericization doesn't happen to weak brands. It happens to brands that won so completely that language had to make room for them.</p>
+    <p class="np">The question isn't whether your name became a verb. The question is what you do when it does, and whether your brand is actually built for that kind of weight.</p>
+  </div>
+</div>
+
+<!-- XEROX LABEL -->
+<div class="section-label">
+  <span class="section-label-text">01 &nbsp;·&nbsp; Xerox</span>
+  <div class="section-label-line"></div>
+  <span class="section-num">Winning the legal battle, losing the cultural one</span>
+</div>
+
+<!-- XEROX DOSSIER -->
+<div class="xerox-world">
+  <div class="dossier">
+    <div class="dossier-header">
+      <span>Xerox Corporation &nbsp;·&nbsp; Trademark Defense Advisory</span>
+      <span class="ref">File: XRX-1974-ONGOING</span>
+    </div>
+    <div class="dossier-fields">
+      <div class="dfield">
+        <span class="dk">Subject</span>
+        <span class="dv">Brand genericization — "xerox" adopted as generic term for photocopying</span>
+      </div>
+      <div class="dfield">
+        <span class="dk">Market position</span>
+        <span class="dv">Monopoly 1959–1975. Competition entered 1970s. Trademark at risk by 1974.</span>
+      </div>
+      <div class="dfield">
+        <span class="dk">Response filed</span>
+        <span class="dv">Legal notices to publishers. "Don't say xerox, say Xerox" campaigns. Continuous enforcement.</span>
+      </div>
+    </div>
+    <div class="dossier-narrative">
+      <span class="dossier-narrative-label">Summary assessment</span>
+      <p>When Xerox released the Model 914 in 1959, plain paper photocopying simply didn't exist before them. They held a monopoly for nearly twenty years. By the time competition arrived in the 1970s, "xeroxing" was already in the dictionary and the trademark was under genuine threat.</p>
+      <p>The defense was methodical. Letters to publishers. Campaigns asking people to stop using the verb. Lawyers engaged continuously. Technically, it worked. The trademark held.</p>
+      <p>What the legal win didn't solve: Xerox isn't in the cultural conversation anymore. Nobody associates the brand with anything beyond a photocopier, a product category that is itself shrinking. The defense protected the name's legal status while the brand quietly became irrelevant. You can win the trademark argument and still lose the more important one.</p>
+    </div>
+    <div class="dossier-verdict">
+      <div class="dv-col">
+        <span class="dv-label">Legal outcome</span>
+        <span class="dv-win">TRADEMARK<br>RETAINED</span>
+      </div>
+      <div class="dv-col">
+        <span class="dv-label">Cultural outcome</span>
+        <span class="dv-loss">not found</span>
+        <span class="dv-loss-sub">cultural relevance: nil</span>
+      </div>
+    </div>
+    <div class="dossier-stamp-area">
+      <p class="dossier-pq">Trademarks don't become extinct because of language. They become extinct through neglect. Xerox chose legal vigilance over cultural relevance, and ended up with both. Just one matters more than the other now.</p>
+      <div class="stamp">
+        <div class="stamp-box">
+          <span class="stamp-line1">TRADEMARK<br>RETAINED</span>
+          <span class="stamp-line2">XRX · 1974</span>
+        </div>
+      </div>
+    </div>
+    <div class="dossier-footer">
+      <span>Xerox Corp. internal advisory</span>
+      <span>Classification: historical</span>
+    </div>
+  </div>
+  <div class="xerox-world-footer"></div>
+</div>
+
+<!-- GOOGLE LABEL -->
+<div class="section-label">
+  <span class="section-label-text">02 &nbsp;·&nbsp; Google</span>
+  <div class="section-label-line"></div>
+  <span class="section-num">Knowing which battles aren't worth fighting</span>
+</div>
+
+<!-- GOOGLE SEARCH WORLD -->
+<div class="google-world">
+  <div class="google-inner">
+
+    <div class="g-header">
+      <div class="g-logo">
+        <span class="g-b">G</span><span class="g-r">o</span><span class="g-y">o</span><span class="g-g">g</span><span class="g-e">l</span><span class="g-e2">e</span>
+      </div>
+      <div class="g-bar">
+        <span class="g-query">to google something<span></span></span>
+        <span class="g-mic">⌕</span>
+      </div>
+    </div>
+
+    <div class="g-stats">About 8,410,000,000 results (0.48 seconds)</div>
+
+    <!-- AI Overview -->
+    <div class="g-ai-overview">
+      <div class="g-ai-label">
+        <div class="g-ai-gem"></div>
+        <span class="g-ai-text">AI Overview</span>
+      </div>
+      <div class="g-ai-body">
+        <p>Google became a verb so fast there was barely time to resist it. By the early 2000s, the search engine had won its category so completely that no competitor could even claim the activity. "To google" entered Merriam-Webster and Oxford as a lowercase verb in 2006.</p>
+        <p>Google's response was to barely respond at all. They maintained trademark guidelines, didn't run public campaigns, didn't ask anyone to stop using the verb. This wasn't confidence for the sake of it. The moat was structural — data, infrastructure, scale accumulated over years in a way that made independent competition near-impossible. Microsoft had Bing. Safari had its default search. Neither came close.</p>
+        <p>But the moat wasn't untouchable. ChatGPT showed that people would use conversational AI to get answers instead of searching for links. Google didn't integrate Gemini because it could afford to be bold. It integrated Gemini because not doing so meant slowly becoming the thing people used before they switched to something better. The structural scale didn't stop the threat. It gave Google enough resources to see it coming and adapt before the gap became unrecoverable.</p>
+      </div>
+    </div>
+
+    <!-- result 1 -->
+    <div class="g-result">
+      <div class="g-result-url">
+        <span class="g-result-favicon">M</span>
+        <span>merriam-webster.com › dictionary › google</span>
+      </div>
+      <div class="g-result-title">google — verb, informal: to search for information on the Internet using the Google search engine</div>
+      <div class="g-result-snippet">First known use: 2001. <em>Googled</em> them before the meeting. People still say "let me google that" even when they're on Safari, Bing, or asking Gemini. The verb detached from the product. That's the whole story.</div>
+    </div>
+
+    <!-- result 2 -->
+    <div class="g-result">
+      <div class="g-result-url">
+        <span class="g-result-favicon">G</span>
+        <span>google.com › policies › trademark</span>
+      </div>
+      <div class="g-result-title">Google Trademark — Use of Google Trademarks</div>
+      <div class="g-result-snippet">Please don't use our name as a verb to refer to search using any other search engine. But also: we know nobody is googling things on another search engine to hurt us. The moat made legal defense largely unnecessary. The data and scale did the work instead.</div>
+    </div>
+
+    <div class="g-pullquote">
+      <p>The moat didn't make Google invincible. It made Google fast enough to survive the one threat that actually mattered. And the verb survived everything.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- FEVICOL LABEL -->
+<div class="section-label">
+  <span class="section-label-text">03 &nbsp;·&nbsp; Fevicol</span>
+  <div class="section-label-line"></div>
+  <span class="section-num">When the name becomes the strategy</span>
+</div>
+
+<!-- FEVICOL WORLD -->
+<div class="fevicol-world">
+  <div class="fevicol-inner">
+    <span class="fevicol-kicker">Pidilite Industries &nbsp;·&nbsp; Since 1959</span>
+    <h2 class="fevicol-headline">The idiom<br>outlasts<br>the trademark.</h2>
+    <span class="fevicol-hindi">फेविकोल का जोड़</span>
+    <div class="fevicol-body">
+      <div class="fevicol-col">
+        <p>Fevicol launched in 1959, the same year as the Xerox 914. By the 1980s, it had replaced "gond" and "chipkane wali cheez" in everyday Hindi. Every adhesive became Fevicol. Pidilite faced the same genericization pressure as Xerox but made a different call: instead of fighting it, they built on top of it.</p>
+        <p>The Ogilvy campaigns from the 1990s onward never once explained how Fevicol worked. The bus ad shows passengers packed so tightly onto a rural bus that no physical force could separate them. A small Fevicol logo appears at the end. Neither ad sells adhesive. Both ads sell permanence.</p>
+      </div>
+      <div class="fevicol-col">
+        <p>What Pidilite understood is that "Fevicol ka jod" had already become a Hindi idiom for any bond that doesn't break. Instead of trying to claw the name back into trademark-safe territory, they made the idiom do brand work. The genericization wasn't a legal threat to manage. It was a positioning asset to deploy.</p>
+        <div class="fevicol-sticker">
+          <p>Emotional equity is harder to challenge than trademark protection. A competitor can file a legal brief. They can't file one against a cultural idiom that generations grew up with.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TABLE -->
+<div class="table-world">
+  <div class="table-inner">
+    <span class="table-heading">The comparison, straight</span>
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Brand</th>
+          <th>Response</th>
+          <th>Primary tool</th>
+          <th>Outcome</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Xerox</td>
+          <td>Active legal and advertising defense</td>
+          <td>Legal notices + campaigns</td>
+          <td>Trademark retained, cultural relevance lost</td>
+        </tr>
+        <tr>
+          <td>Google</td>
+          <td>Quiet, strategic non-resistance</td>
+          <td>Structural moat + trademark guidelines</td>
+          <td>Verb survived product transformation</td>
+        </tr>
+        <tr>
+          <td>Fevicol</td>
+          <td>Full embrace</td>
+          <td>Emotional storytelling</td>
+          <td>Name became a cultural idiom</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- MAGGI / IRREPLACEABILITY -->
+<div class="maggi-world">
+
+  <!-- top yellow stripe -->
+  <div class="maggi-stripe-top">
+    <span class="maggi-brand">Maggi</span>
+    <span class="maggi-2min">2 Minute<br>Noodles</span>
+  </div>
+
+  <div class="maggi-body-wrap">
+    <div class="maggi-inner">
+
+      <div class="maggi-recall-row">
+        <span class="maggi-recall-badge">&#9888; Product Recall</span>
+        <span class="maggi-recall-date">June 2015 &nbsp;&middot;&nbsp; FSSAI Order</span>
+      </div>
+
+      <span class="maggi-kicker">The variable nobody talks about</span>
+      <h2 class="maggi-headline">The brand name so inseparable from the category that when the crisis hit, it owned the crisis too.</h2>
+
+      <div class="maggi-body">
+        <p>Maggi had the same category ownership as Fevicol. In large parts of India, instant noodles were Maggi. The emotional equity was real and deep, built over decades of the same kind of cultural familiarity that made Fevicol untouchable.</p>
+        <p>Then the 2015 lead crisis hit. Every headline said "Maggi." Not "instant noodles." Not "noodle brands." Maggi. The same genericization that should have been a moat became the liability &mdash; the name was so inseparable from the category that the crisis owned the category too. Competitors benefited. The brand spent years recovering.</p>
+        <p>The difference between Maggi and Fevicol isn't emotional equity. It's replaceability. Fevicol is the adhesive &mdash; there is no functional substitute. Maggi was the emotional default in a category where physical substitutes existed and were ready the moment the brand stumbled.</p>
+      </div>
+
+      <div class="maggi-split">
+        <div class="maggi-split-col">
+          <span class="maggi-split-label">Fevicol &mdash; irreplaceable</span>
+          <span class="maggi-split-val safe">Category ownership = moat. No substitute exists. Crisis couldn&rsquo;t touch it.</span>
+        </div>
+        <div class="maggi-split-col">
+          <span class="maggi-split-label">Maggi &mdash; replaceable</span>
+          <span class="maggi-split-val danger">Category ownership = liability. Substitutes were ready. Crisis owned the category.</span>
+        </div>
+      </div>
+
+      <div class="maggi-callout">
+        <p>Category ownership protects you when you&rsquo;re irreplaceable. It amplifies the crisis when you&rsquo;re not.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- bottom yellow stripe -->
+  <div class="maggi-stripe-bottom">
+    <span>Nestle India Ltd.</span>
+    <span>Banned across 5 states &middot; June 2015</span>
+    <span>Relaunched &middot; November 2015</span>
+  </div>
+
+</div>
+
+<!-- CONCLUSION -->
+<div class="conclusion-world">
+  <div class="conclusion-inner">
+    <p class="conclusion-text">Genericization is a report card with a footnote. The grade tells you how completely you won. The footnote says: make sure the thing you won can&rsquo;t be replaced.</p>
+    <span class="conclusion-sub">Hansika Bansal &nbsp;&middot;&nbsp; 2026</span>
+  </div>
+</div>
+
+<style>
+/* ─── BASE ANIMATION STATES ─── */
+.anim{opacity:0;will-change:transform,opacity}
+.fade-up{transform:translateY(48px)}
+.fade-left{transform:translateX(-40px)}
+.fade-right{transform:translateX(40px)}
+.fade-scale{transform:scale(.94)}
+.anim.visible{
+  opacity:1;
+  transform:none;
+  transition:opacity .75s cubic-bezier(.22,1,.36,1), transform .75s cubic-bezier(.22,1,.36,1);
+}
+
+/* stagger delays */
+.delay-1{transition-delay:.1s}
+.delay-2{transition-delay:.2s}
+.delay-3{transition-delay:.32s}
+.delay-4{transition-delay:.46s}
+.delay-5{transition-delay:.62s}
+.delay-6{transition-delay:.8s}
+
+/* ─── HERO title reveal ─── */
+.hero-title .word{
+  display:inline-block;
+  opacity:0;
+  transform:translateY(40px);
+  transition:opacity .6s cubic-bezier(.22,1,.36,1), transform .6s cubic-bezier(.22,1,.36,1);
+}
+.hero-title .word.visible{opacity:1;transform:none}
+
+/* ─── SECTION LABEL line draw ─── */
+.section-label-line{
+  width:0;
+  transition:width 1s cubic-bezier(.22,1,.36,1);
+}
+.section-label.visible .section-label-line{width:100%}
+.section-label .section-label-text,
+.section-label .section-num{
+  opacity:0;
+  transition:opacity .5s ease;
+}
+.section-label.visible .section-label-text{opacity:1;transition-delay:.2s}
+.section-label.visible .section-num{opacity:1;transition-delay:.5s}
+
+/* ─── XEROX STAMP bounce ─── */
+.stamp{
+  opacity:0;
+  transform:scale(2.2) rotate(-20deg);
+  transition:opacity .5s ease, transform .65s cubic-bezier(.34,1.56,.64,1);
+}
+.stamp.visible{
+  opacity:1;
+  transform:rotate(-9deg) scale(1);
+}
+
+/* ─── DOSSIER fields slide in ─── */
+.dfield{
+  opacity:0;
+  transform:translateX(-20px);
+  transition:opacity .5s ease, transform .5s cubic-bezier(.22,1,.36,1);
+}
+.dfield.visible{opacity:1;transform:none}
+
+/* ─── DOSSIER narrative paragraphs ─── */
+.dossier-narrative p{
+  opacity:0;
+  transform:translateY(16px);
+  transition:opacity .55s ease, transform .55s cubic-bezier(.22,1,.36,1);
+}
+.dossier-narrative p.visible{opacity:1;transform:none}
+
+/* ─── VERDICT columns ─── */
+.dv-col{
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity .55s ease, transform .55s cubic-bezier(.22,1,.36,1);
+}
+.dv-col.visible{opacity:1;transform:none}
+
+/* ─── GOOGLE typewriter cursor already exists ─── */
+
+/* ─── GOOGLE results stagger ─── */
+.g-ai-overview, .g-result, .g-pullquote{
+  opacity:0;
+  transform:translateY(24px);
+  transition:opacity .6s ease, transform .6s cubic-bezier(.22,1,.36,1);
+}
+.g-ai-overview.visible, .g-result.visible, .g-pullquote.visible{
+  opacity:1;transform:none;
+}
+
+/* ─── FEVICOL headline slide ─── */
+.fevicol-headline{
+  opacity:0;
+  transform:translateY(50px);
+  transition:opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1);
+}
+.fevicol-headline.visible{opacity:1;transform:none}
+
+.fevicol-hindi{
+  opacity:0;
+  transition:opacity 1.2s ease .3s;
+}
+.fevicol-hindi.visible{opacity:1}
+
+.fevicol-col{
+  opacity:0;
+  transform:translateY(30px);
+  transition:opacity .7s ease, transform .7s cubic-bezier(.22,1,.36,1);
+}
+.fevicol-col.visible{opacity:1;transform:none}
+
+/* sticker pops */
+.fevicol-sticker{
+  opacity:0;
+  transform:rotate(-4deg) scale(.9);
+  transition:opacity .5s ease, transform .5s cubic-bezier(.34,1.56,.64,1);
+}
+.fevicol-sticker.visible{
+  opacity:1;
+  transform:rotate(-1.5deg) scale(1);
+}
+
+/* ─── MAGGI ─── */
+.maggi-stripe-top{
+  transform:translateY(-100%);
+  transition:transform .7s cubic-bezier(.22,1,.36,1);
+}
+.maggi-stripe-top.visible{transform:none}
+
+.maggi-stripe-bottom{
+  transform:translateY(100%);
+  transition:transform .7s cubic-bezier(.22,1,.36,1) .1s;
+}
+.maggi-stripe-bottom.visible{transform:none}
+
+.maggi-recall-badge{
+  opacity:0;
+  transform:scale(.85);
+  transition:opacity .4s ease, transform .4s cubic-bezier(.34,1.56,.64,1);
+}
+.maggi-recall-badge.visible{opacity:1;transform:scale(1)}
+
+/* badge pulse after appearing */
+@keyframes pulse-badge{
+  0%,100%{box-shadow:0 0 0 0 rgba(245,200,66,.4)}
+  50%{box-shadow:0 0 0 8px rgba(245,200,66,0)}
+}
+.maggi-recall-badge.pulse{animation:pulse-badge 1.8s ease-in-out infinite}
+
+.maggi-split-col{
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity .55s ease, transform .55s cubic-bezier(.22,1,.36,1);
+}
+.maggi-split-col.visible{opacity:1;transform:none}
+
+.maggi-body p{
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity .6s ease, transform .6s cubic-bezier(.22,1,.36,1);
+}
+.maggi-body p.visible{opacity:1;transform:none}
+
+.maggi-callout{
+  opacity:0;
+  transform:translateY(16px);
+  transition:opacity .6s ease .3s, transform .6s cubic-bezier(.22,1,.36,1) .3s;
+}
+.maggi-callout.visible{opacity:1;transform:none}
+
+/* ─── CONCLUSION ─── */
+.conclusion-text{
+  opacity:0;
+  transform:translateY(30px);
+  transition:opacity 1s ease, transform 1s cubic-bezier(.22,1,.36,1);
+}
+.conclusion-text.visible{opacity:1;transform:none}
+.conclusion-sub{
+  opacity:0;
+  transition:opacity .8s ease .5s;
+}
+.conclusion-sub.visible{opacity:1}
+
+/* ─── TABLE rows ─── */
+.comp-table tbody tr{
+  opacity:0;
+  transform:translateX(-16px);
+  transition:opacity .5s ease, transform .5s cubic-bezier(.22,1,.36,1);
+}
+.comp-table tbody tr.visible{opacity:1;transform:none}
+
+/* ─── INTRO paragraphs ─── */
+.intro .np{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .7s ease, transform .7s cubic-bezier(.22,1,.36,1);
+}
+.intro .np.visible{opacity:1;transform:none}
+
+/* ─── NPULL ─── */
+.npull{
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity .7s ease, transform .7s cubic-bezier(.22,1,.36,1);
+}
+.npull.visible{opacity:1;transform:none}
+
+/* ─── GOOGLE body paragraphs ─── */
+.google-world .np{
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity .6s ease, transform .6s cubic-bezier(.22,1,.36,1);
+}
+.google-world .np.visible{opacity:1;transform:none}
+</style>
+
+<script>
+// ─── INTERSECTION OBSERVER ───
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      // pulse badge after it appears
+      if(e.target.classList.contains('maggi-recall-badge')){
+        setTimeout(()=>e.target.classList.add('pulse'), 500);
+      }
+      io.unobserve(e.target);
+    }
+  });
+}, {threshold: 0.12});
+
+// ─── HERO WORD SPLIT ───
+const heroTitle = document.querySelector('.hero-title');
+if(heroTitle){
+  const html = heroTitle.innerHTML;
+  const words = html.split(/(\s+|<br>)/);
+  let idx = 0;
+  heroTitle.innerHTML = words.map(w => {
+    if(w === '<br>' || w.trim() === '') return w;
+    const delay = idx++ * 0.08;
+    return `<span class="word" style="transition-delay:${delay}s">${w}</span>`;
+  }).join('');
+  // trigger after short delay
+  setTimeout(()=>{
+    document.querySelectorAll('.hero-title .word').forEach(w => w.classList.add('visible'));
+  }, 200);
+}
+
+// ─── HERO TAG + BYLINE fade in ───
+['.hero-tag','.hero-byline'].forEach((sel,i)=>{
+  const el = document.querySelector(sel);
+  if(!el) return;
+  el.style.cssText += `opacity:0;transform:translateY(16px);transition:opacity .6s ease ${.6+i*.2}s,transform .6s ease ${.6+i*.2}s`;
+  setTimeout(()=>{el.style.opacity='1';el.style.transform='none'},300);
+});
+
+// ─── OBSERVE: intro paragraphs ───
+document.querySelectorAll('.intro .np').forEach((el,i)=>{
+  el.style.transitionDelay = `${i*.12}s`;
+  io.observe(el);
+});
+
+// ─── OBSERVE: section labels ───
+document.querySelectorAll('.section-label').forEach(el => io.observe(el));
+
+// ─── OBSERVE: dossier fields ───
+document.querySelectorAll('.dfield').forEach((el,i)=>{
+  el.style.transitionDelay = `${i*.1}s`;
+  io.observe(el);
+});
+
+// ─── OBSERVE: dossier narrative paras ───
+document.querySelectorAll('.dossier-narrative p').forEach((el,i)=>{
+  el.style.transitionDelay = `${i*.12}s`;
+  io.observe(el);
+});
+
+// ─── OBSERVE: verdict cols ───
+document.querySelectorAll('.dv-col').forEach((el,i)=>{
+  el.style.transitionDelay = `${i*.15}s`;
+  io.observe(el);
+});
+
+// ─── OBSERVE: stamp ───
+const stamp = document.querySelector('.stamp');
+if(stamp) io.observe(stamp);
+
+// ─── GOOGLE: typewriter on search bar ───
+const gQuery = document.querySelector('.g-query');
+if(gQuery){
+  const fullText = 'to google something';
+  gQuery.innerHTML = '<span></span>';
+  const cursor = gQuery.querySelector('span');
+  let typed = false;
+
+  const typeWriter = ()=>{
+    if(typed) return;
+    typed = true;
+    let i = 0;
+    const interval = setInterval(()=>{
+      gQuery.textContent = fullText.slice(0,i+1);
+      gQuery.appendChild(cursor);
+      i++;
+      if(i >= fullText.length) clearInterval(interval);
+    }, 55);
+  };
+
+  const gObs = new IntersectionObserver(entries=>{
+    if(entries[0].isIntersecting){ typeWriter(); gObs.disconnect(); }
+  },{threshold:.4});
+  const gBar = document.querySelector('.g-bar');
+  if(gBar) gObs.observe(gBar);
+}
+
+// ─── OBSERVE: google elements ───
+document.querySelectorAll('.g-ai-overview,.g-result,.g-pullquote').forEach((el,i)=>{
+  el.style.transitionDelay = `${i*.18}s`;
+  io.observe(el);
+});
+document.querySelectorAll('.google-world .np').forEach((el,i)=>{
+  el.style.transitionDelay = `${i*.1}s`;
+  io.observe(el);
+});
+
+// ─── OBSERVE: fevicol ───
+['.fevicol-headline','.fevicol-hindi'].forEach(sel=>{
+  const el=document.querySelector(sel); if(el) io.observe(el);
+});
+document.querySelectorAll('.fevicol-col').forEach((el,i)=>{
+  el.style.transitionDelay=`${i*.18}s`; io.observe(el);
+});
+const sticker=document.querySelector('.fevicol-sticker');
+if(sticker) io.observe(sticker);
+
+// ─── OBSERVE: maggi ───
+['.maggi-stripe-top','.maggi-stripe-bottom','.maggi-recall-badge','.maggi-headline','.maggi-callout'].forEach(sel=>{
+  const el=document.querySelector(sel); if(el) io.observe(el);
+});
+document.querySelectorAll('.maggi-body p').forEach((el,i)=>{
+  el.style.transitionDelay=`${i*.12}s`;
+  io.observe(el);
+});
+document.querySelectorAll('.maggi-split-col').forEach((el,i)=>{
+  el.style.transitionDelay=`${i*.15}s`; io.observe(el);
+});
+
+// ─── OBSERVE: table rows ───
+document.querySelectorAll('.comp-table tbody tr').forEach((el,i)=>{
+  el.style.transitionDelay=`${i*.12}s`; io.observe(el);
+});
+
+// ─── OBSERVE: npull ───
+document.querySelectorAll('.npull').forEach(el=>io.observe(el));
+
+// ─── OBSERVE: conclusion ───
+['.conclusion-text','.conclusion-sub'].forEach(sel=>{
+  const el=document.querySelector(sel); if(el) io.observe(el);
+});
+
+// ─── SMOOTH PARALLAX on hero ───
+window.addEventListener('scroll',()=>{
+  const hero=document.querySelector('.hero');
+  if(!hero) return;
+  const y=window.scrollY;
+  hero.style.transform=`translateY(${y*.3}px)`;
+  hero.style.opacity=Math.max(0,1-y/500);
+},{passive:true});
+</script>
+
+</body>
+</html>
